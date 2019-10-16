@@ -1,0 +1,47 @@
+* {
+    background:rgba(0, 0, 0, .02);
+    box-sizing: border-box;
+    position: relative;
+}
+.navbar,.header{
+    text-align: center;
+}
+.navbar{
+    background: #db4c3f;
+    text-align: center;
+    color:#f7f3ea;
+    padding: 10px 0;
+}
+.navbar h1{
+    margin: 0;
+   
+}
+
+.header{
+    padding: 5px 0;
+    color: #555;
+    font-size: 18px;
+}
+input,button,textarea{
+    
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    padding: 5px 10px;
+   
+}
+input,textarea,.wrap{
+    width: 100%;
+}
+input{
+    display: block;
+    
+}
+
+.wrap{
+    max-width: 700px;
+    
+    margin: 0 auto;
+}
+audio{
+    display: none;
+}

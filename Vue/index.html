@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="main">
+        <div class="navbar">
+            <h1>任务列表：</h1>
+        </div>
+        <div class="header">
+                <h2>作业写了没，还在开黑？</h2>
+        </div>
+        <form @submit.prevent='add' id="task-form">
+            <div class="wrap">
+                <input v-model='current.title' type="text" class="task-input" autocomplete="off">
+                
+                <div class="detail">
+                    <textarea v-model="current.desc">
+
+                    </textarea>
+
+                  
+                    <input  v-model="current.alert_at" type="datetime-local" >
+                </div>
+               
+                <button type="submit">提交</button>
+                
+            </div>
+        </form>
+        <div class="task-list">
+            <div class="wrap">
+                未完成：
+                <task :todo="todo"
+                      v-if="!todo.completed" 
+                      v-for="(todo,index) in list" 
+                ></task>
+
+            </div>
+        </div>
+        <div class="task-list">
+            <div class="wrap">
+                未完成：
+                <div v-if="todo.completed" v-for="(todo,index) in list" class="item completed">
+                    <button @click="toggle_complete(todo.id)">未完成</button>
+                   {{todo.title}}
+                   <button @click='remove(todo.id)'>删除</button>
+                   <button @click='set_current(todo)'>更新</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+<audio controls id="alert_sound">
+    <source src="lib/echo.mp3">
+</audio>    
+<template id='task-tpl'>
+        
+              <div  class="item">
+                    
+                    <button @click="action('toggle_complete',todo.id)">完成</button>
+                   {{todo.title}}
+                   
+                   <button @click='action("remove",todo.id)'>删除</button>
+                  
+                   <button @click='action("set_current",todo)'>更新</button>
+                </div>
+</template>
+    <script src="vue.js"></script>
+    <script src="index.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
